@@ -7,7 +7,7 @@ formChamado.addEventListener("submit", async (event) => {
 
     try {
         const response = await fetch('https://parseapi.back4app.com/classes/Chamado', {
-            method: 'POST',
+            method: 'GET',
             headers: {
                 'X-Parse-Application-Id': 'RVSqnwoDE2zJ9QRCxCfrG9szWYcIOlKDGt4gwbUR',
                 'X-Parse-REST-API-Key': 'jQ6avsMD5F4M1o6jZpeuLGRwxCN9WXx748mA3dqs',
