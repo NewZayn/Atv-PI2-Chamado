@@ -44,32 +44,33 @@ document.addEventListener('DOMContentLoaded', async function() {
 
     // Função para responder ao chamado
     async function responderChamado(chamadoId) {
-        const resposta = prompt('Digite a resposta para o chamado:');
-        if (resposta !== null) {
-            try {
-                const response = await fetch(`https://parseapi.back4app.com/classes/Chamado/${chamadoId}`, {
-                    method: 'PUT',
-                    headers: {
-                        'X-Parse-Application-Id': 'RVSqnwoDE2zJ9QRCxCfrG9szWYcIOlKDGt4gwbUR',
-                        'X-Parse-REST-API-Key': 'jQ6avsMD5F4M1o6jZpeuLGRwxCN9WXx748mA3dqs',
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        resposta: resposta,
-                        finalizado: true
-                    })
-                });
+    const resposta = prompt('Digite a resposta para o chamado:');
+    if (resposta !== null) {
+        try {
+            const response = await fetch(`https://parseapi.back4app.com/classes/Chamado/${chamadoId}`, {
+                method: 'PUT',
+                headers: {
+                    'X-Parse-Application-Id': 'RVSqnwoDE2zJ9QRCxCfrG9szWYcIOlKDGt4gwbUR',
+                    'X-Parse-REST-API-Key': 'jQ6avsMD5F4M1o6jZpeuLGRwxCN9WXx748mA3dqs',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    resposta: resposta,
+                    finalizado: true
+                })
+            });
 
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-
-                console.log('Resposta enviada e chamado finalizado com sucesso!');
-            } catch (error) {
-                console.error('Erro ao enviar a resposta e finalizar o chamado:', error);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
             }
+
+            console.log('Resposta enviada e chamado finalizado com sucesso!');
+        } catch (error) {
+            console.error('Erro ao enviar a resposta e finalizar o chamado:', error);
         }
     }
+}
+
 
     // Event listener para o formulário de resposta
     formResposta.addEventListener('submit', async function(event) {
