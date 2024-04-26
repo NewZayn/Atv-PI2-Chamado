@@ -33,7 +33,14 @@ document.addEventListener('DOMContentLoaded', async function() {
                 <td>${chamado.resposta || 'Nenhuma resposta ainda'}</td>
                 <td>${chamado.finalizado ? 'Sim' : 'Não'}</td>
                 <td>
-                    <button onclick="responderChamado('${chamado.objectId}')">Responder</button>
+                    <button onclick="toggleRespostaForm(this)">Responder</button>
+                    <form class="formResposta" style="display: none;">
+                        <div>
+                            <label for="inputResposta">Resposta:</label>
+                            <textarea class="inputResposta" name="resposta" rows="4" required></textarea>
+                        </div>
+                        <button type="submit">Enviar Resposta e Finalizar Chamado</button>
+                    </form>
                 </td>
             `;
             tabelaChamados.appendChild(linha);
@@ -41,81 +48,51 @@ document.addEventListener('DOMContentLoaded', async function() {
     } catch (error) {
         console.error('Erro ao carregar os detalhes do chamado:', error);
     }
+});
 
-    // Função para responder ao chamado
-    async function responderChamado(chamadoId) {
-    const resposta = prompt('Digite a resposta para o chamado:');
-    if (resposta !== null) {
-        try {
-            const response = await fetch(`https://parseapi.back4app.com/classes/Chamado/${chamadoId}`, {
-                method: 'PUT',
-                headers: {
-                    'X-Parse-Application-Id': 'RVSqnwoDE2zJ9QRCxCfrG9szWYcIOlKDGt4gwbUR',
-                    'X-Parse-REST-API-Key': 'jQ6avsMD5F4M1o6jZpeuLGRwxCN9WXx748mA3dqs',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    resposta: resposta,
-                    finalizado: true
-                })
-            });
-
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-
-            console.log('Resposta enviada e chamado finalizado com sucesso!');
-        } catch (error) {
-            console.error('Erro ao enviar a resposta e finalizar o chamado:', error);
-        }
-    }
+function toggleRespostaForm(button) {
+    const formResposta = button.parentElement.nextElementSibling.querySelector('.formResposta');
+    formResposta.style.display = formResposta.style.display === 'none' ? 'block' : 'none';
 }
 
-
-    formChamado.addEventListener("submit", async (event) => {
-
-    const formData = new FormData(formChamado);
-    const data = Object.fromEntries(formData.entries()); 
-
+async function responderChamado(chamadoId, resposta) {
     try {
-        const response = await fetch('https://parseapi.back4app.com/classes/Chamado', {
-            method: 'POST',
+        const response = await fetch(`https://parseapi.back4app.com/classes/Chamado/${chamadoId}`, {
+            method: 'PUT',
             headers: {
                 'X-Parse-Application-Id': 'RVSqnwoDE2zJ9QRCxCfrG9szWYcIOlKDGt4gwbUR',
                 'X-Parse-REST-API-Key': 'jQ6avsMD5F4M1o6jZpeuLGRwxCN9WXx748mA3dqs',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(data)
+            body: JSON.stringify({
+                resposta: resposta,
+                finalizado: true
+            })
         });
 
-        if (response.ok) {
-            console.log('Chamado enviado com sucesso!');
-        } else {
-            console.error('Erro ao enviar chamado:', response.statusText);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
         }
+
+        console.log('Resposta enviada e chamado finalizado com sucesso!');
     } catch (error) {
-        console.error('Erro ao enviar chamado:', error.message);
+        console.error('Erro ao enviar a resposta e finalizar o chamado:', error);
     }
-  });
+}
 
+const formResposta = document.getElementById('formResposta');
+formResposta.addEventListener('submit', async function(event) {
+    event.preventDefault();
+    const resposta = this.querySelector('.inputResposta').value.trim();
 
-    // Event listener para o formulário de resposta
-    formResposta.addEventListener('submit', async function(event) {
-        event.preventDefault();
-        const resposta = document.getElementById('inputResposta').value.trim();
-
-        if (resposta !== '') {
-            try {
-                // Aqui você pode enviar a resposta para o servidor, se necessário
-                console.log('Resposta enviada:', resposta);
-            } catch (error) {
-                console.error('Erro ao enviar a resposta:', error);
-            }
-        } else {
-            alert('Por favor, insira uma resposta.');
-        }
-    });
+    if (resposta !== '') {
+        const chamadoId = this.parentElement.parentElement.dataset.chamadoId;
+        responderChamado(chamadoId, resposta);
+    } else {
+        alert('Por favor, insira uma resposta.');
+    }
 });
+
 
 
 
