@@ -17,22 +17,30 @@
                 <th>Mensagem</th>
                 <th>Resposta</th>
                 <th>Finalizado</th>
-                <th>Ações</th> <!-- Nova coluna para as ações -->
+                <th>Ações</th>
             </tr>
         </thead>
         <tbody id="corpoTabelaChamados">
             <!-- Aqui serão inseridos os detalhes do chamado dinamicamente -->
+            <tr>
+                <td>Nome do Exemplo</td>
+                <td>exemplo@email.com</td>
+                <td>Assunto de Exemplo</td>
+                <td>Mensagem de Exemplo</td>
+                <td>Resposta de Exemplo</td>
+                <td>Sim</td>
+                <td>
+                    <form class="formResposta">
+                        <div>
+                            <label for="inputResposta">Resposta:</label>
+                            <textarea class="inputResposta" name="resposta" rows="4" required></textarea>
+                        </div>
+                        <button type="submit">Enviar Resposta e Finalizar Chamado</button>
+                    </form>
+                </td>
+            </tr>
         </tbody>
     </table>
-
-    <h2>Responder ao Chamado</h2>
-    <form id="formResposta">
-        <div>
-            <label for="inputResposta">Resposta:</label>
-            <textarea id="inputResposta" name="resposta" rows="4" required></textarea>
-        </div>
-        <button type="submit">Enviar Resposta e Finalizar Chamado</button>
-    </form>
 
     <script src="script.js"></script>
 </body>
