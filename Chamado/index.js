@@ -1,7 +1,7 @@
 const tarefaURL = "https://parseapi.back4app.com/classes/Chamado";
 const headers = {
     "X-Parse-Application-Id": "lknxQw2TygNmmkTwsY02D09lxXlzLklEUEPnuZ1I",
-    "X-Parse-REST-API-Key": "JRe8VT03ds0DvVHbHV3py2hOjY0EUIT3FcuTrnBx",
+    "X-Parse-REST-API-Key": "mSwbnPjpwvDwCmX05NASyClqUYRpaK64A6k1aMMM",
 };
 
 const formChamado = document.getElementById("formChamado");
