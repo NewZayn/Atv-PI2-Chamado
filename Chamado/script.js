@@ -6,7 +6,13 @@ document.addEventListener('DOMContentLoaded', async function() {
     async function carregarDetalhesChamado() {
         try {
             const response = await fetch('URL_PARA_O_ENDPOINT_DO_CHAMADO');
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
             const chamados = await response.json();
+
+            // Limpar a tabela antes de adicionar novos chamados
+            tabelaChamados.innerHTML = '';
 
             // Montar os detalhes do chamado no HTML
             chamados.forEach(chamado => {
