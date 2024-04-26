@@ -1,22 +1,26 @@
 document.addEventListener('DOMContentLoaded', async function() {
-    const detalhesChamado = document.getElementById('detalhesChamado');
+    const tabelaChamados = document.getElementById('tabelaChamados');
     const formResposta = document.getElementById('formResposta');
 
     // Função para carregar os detalhes do chamado
     async function carregarDetalhesChamado() {
         try {
             const response = await fetch('URL_PARA_O_ENDPOINT_DO_CHAMADO');
-            const data = await response.json();
+            const chamados = await response.json();
 
             // Montar os detalhes do chamado no HTML
-            detalhesChamado.innerHTML = `
-                <p><strong>Nome:</strong> ${data.nome}</p>
-                <p><strong>E-mail:</strong> ${data.email}</p>
-                <p><strong>Assunto:</strong> ${data.assunto}</p>
-                <p><strong>Mensagem:</strong> ${data.mensagem}</p>
-                <p><strong>Resposta:</strong> ${data.resposta || 'Nenhuma resposta ainda'}</p>
-                <p><strong>Finalizado:</strong> ${data.finalizado ? 'Sim' : 'Não'}</p>
-            `;
+            chamados.forEach(chamado => {
+                const linha = document.createElement('tr');
+                linha.innerHTML = `
+                    <td>${chamado.nome}</td>
+                    <td>${chamado.email}</td>
+                    <td>${chamado.assunto}</td>
+                    <td>${chamado.mensagem}</td>
+                    <td>${chamado.resposta || 'Nenhuma resposta ainda'}</td>
+                    <td>${chamado.finalizado ? 'Sim' : 'Não'}</td>
+                `;
+                tabelaChamados.appendChild(linha);
+            });
         } catch (error) {
             console.error('Erro ao carregar os detalhes do chamado:', error);
         }
