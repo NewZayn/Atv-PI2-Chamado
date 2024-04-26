@@ -8,9 +8,21 @@
 </head>
 <body>
     <h1>Detalhes do Chamado</h1>
-    <ul id="detalhesChamado">
-        <!-- Aqui serão inseridos os detalhes do chamado dinamicamente -->
-    </ul>
+    <table id="tabelaChamados">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Assunto</th>
+                <th>Mensagem</th>
+                <th>Resposta</th>
+                <th>Finalizado</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Aqui serão inseridos os detalhes do chamado dinamicamente -->
+        </tbody>
+    </table>
 
     <h2>Responder ao Chamado</h2>
     <form id="formResposta">
@@ -22,6 +34,5 @@
     </form>
 
     <script src="script.js"></script>
-    <script src="exibirChamado.js"></script> <!-- Adicionando o script para exibir o chamado -->
 </body>
 </html>
