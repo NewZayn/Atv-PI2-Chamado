@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', async function() {
     const tabelaChamados = document.getElementById('corpoTabelaChamados');
-    const formResposta = document.getElementById('formResposta');
 
     try {
         const response = await fetch('https://parseapi.back4app.com/classes/Chamado', {
@@ -36,10 +35,10 @@ document.addEventListener('DOMContentLoaded', async function() {
                     <button onclick="toggleRespostaForm(this)">Responder</button>
                     <form class="formResposta" style="display: none;">
                         <div>
-                            <label for="inputResposta">Resposta:</label>
-                            <textarea class="inputResposta" name="resposta" rows="4" required></textarea>
+                            <label for="inputResposta_${chamado.objectId}">Resposta:</label>
+                            <textarea id="inputResposta_${chamado.objectId}" class="inputResposta" name="resposta" rows="4" required></textarea>
                         </div>
-                        <button type="submit">Enviar Resposta e Finalizar Chamado</button>
+                        <button type="submit">Enviar Resposta</button>
                     </form>
                 </td>
             `;
@@ -80,22 +79,16 @@ async function responderChamado(chamadoId, resposta) {
     }
 }
 
-const formResposta = document.getElementById('formResposta');
-formResposta.addEventListener('submit', async function(event) {
+document.addEventListener('submit', async function(event) {
     event.preventDefault();
-    const resposta = this.querySelector('.inputResposta').value.trim();
+    const form = event.target;
+    const resposta = form.querySelector('.inputResposta').value.trim();
 
     if (resposta !== '') {
-        const chamadoId = this.parentElement.parentElement.dataset.chamadoId;
+        const chamadoId = form.parentElement.parentElement.dataset.chamadoId;
         responderChamado(chamadoId, resposta);
     } else {
         alert('Por favor, insira uma resposta.');
     }
 });
-
-
-
-
-     
-
 
