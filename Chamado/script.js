@@ -6,9 +6,11 @@ async function carregarDetalhesChamado() {
         'X-Parse-REST-API-Key': 'jQ6avsMD5F4M1o6jZpeuLGRwxCN9WXx748mA3dqs'
       }
     });
+
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
+
     const data = await response.json();
 
     // Verificar se 'chamados' é um array
@@ -34,7 +36,6 @@ async function carregarDetalhesChamado() {
     console.error('Erro ao carregar os detalhes do chamado:', error);
   }
 }
-
 
      
 
