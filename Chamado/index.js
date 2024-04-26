@@ -17,7 +17,7 @@ formChamado.addEventListener("submit", async (event) => {
             method: 'POST',
             headers: {
                 'X-Parse-Application-Id': 'lknxQw2TygNmmkTwsY02D09lxXlzLklEUEPnuZ1I',
-                'X-Parse-REST-API-Key': 'JRe8VT03ds0DvVHbHV3py2hOjY0EUIT3FcuTrnBx',
+                'X-Parse-REST-API-Key': 'mSwbnPjpwvDwCmX05NASyClqUYRpaK64A6k1aMMM',
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(data)
