@@ -1,7 +1,6 @@
 const formChamado = document.getElementById("formChamado");
 
 formChamado.addEventListener("submit", async (event) => {
-    event.preventDefault(); // Impede o comportamento padrão de envio do formulário
 
     const formData = new FormData(formChamado);
     const data = Object.fromEntries(formData.entries()); // Converte o FormData para um objeto JavaScript
