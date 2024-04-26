@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         const resposta = formData.get('resposta');
 
         try {
-            const response = await fetch('URL_PARA_O_ENDPOINT_DE_RESPOSTA', {
+            const response = await fetch('https://parseapi.back4app.com/classes/Chamado', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
