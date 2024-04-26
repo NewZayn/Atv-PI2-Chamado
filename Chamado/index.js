@@ -1,9 +1,7 @@
-
-
-const tarefaURL = "https://parseapi.back4app.com/classes/Tarefa";
+const tarefaURL = "https://parseapi.back4app.com/classes/Chamado";
 const headers = {
-  "X-Parse-Application-Id": "lknxQw2TygNmmkTwsY02D09lxXlzLklEUEPnuZ1I",
-  "X-Parse-REST-API-Key": "JRe8VT03ds0DvVHbHV3py2hOjY0EUIT3FcuTrnBx",
+    "X-Parse-Application-Id": "lknxQw2TygNmmkTwsY02D09lxXlzLklEUEPnuZ1I",
+    "X-Parse-REST-API-Key": "JRe8VT03ds0DvVHbHV3py2hOjY0EUIT3FcuTrnBx",
 };
 
 const formChamado = document.getElementById("formChamado");
@@ -33,4 +31,10 @@ formChamado.addEventListener("submit", async (event) => {
     } catch (error) {
         console.error('Erro ao enviar chamado:', error.message);
     }
+  
+    // Exemplo de código para exibir os dados do formulário no console
+    formData.forEach(function(value, key) {
+        console.log(key + ': ' + value);
+    });
 });
+
