@@ -37,4 +37,15 @@ formChamado.addEventListener("submit", async (event) => {
         console.log(key + ': ' + value);
     });
 });
+// Captura o elemento h1 pelo ID
+const titulo = document.getElementById('titulo');
+
+// Verifica se o elemento foi encontrado
+if (titulo) {
+    // Altera o texto do elemento h1
+    titulo.textContent = 'Conexão com JavaScript bem-sucedida!';
+} else {
+    console.error('Elemento h1 não encontrado!');
+}
+
 
