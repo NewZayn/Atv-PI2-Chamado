@@ -21,8 +21,7 @@
             </tr>
         </thead>
         <tbody id="corpoTabelaChamados">
-            <!-- Os detalhes do chamado serão inseridos aqui dinamicamente -->
-            <!-- Exemplo de uma linha de chamado -->
+            <!-- Aqui serão inseridos os detalhes do chamado dinamicamente -->
             <tr>
                 <td>Nome do Exemplo</td>
                 <td>exemplo@email.com</td>
@@ -31,13 +30,12 @@
                 <td>Resposta de Exemplo</td>
                 <td>Sim</td>
                 <td>
-                    <button onclick="toggleRespostaForm(this)">Responder</button>
                     <form class="formResposta" style="display: none;">
                         <div>
                             <label for="inputResposta">Resposta:</label>
                             <textarea id="inputResposta" class="inputResposta" name="resposta" rows="4" required></textarea>
                         </div>
-                        <button type="submit">Enviar Resposta</button>
+                        <button type="submit">Enviar Resposta e Finalizar Chamado</button>
                     </form>
                 </td>
             </tr>
@@ -47,4 +45,5 @@
     <script src="script.js"></script>
 </body>
 </html>
+
 
