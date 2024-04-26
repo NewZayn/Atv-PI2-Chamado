@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', async function() {
       // Limpar a tabela antes de adicionar novos chamados
       tabelaChamados.innerHTML = '';
 
-      // Montar os detalhes do chamado no HTML.
+      // Montar os detalhes do chamado na tabela
       chamados.forEach(chamado => {
         const linha = document.createElement('tr');
         linha.innerHTML = `
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         tabelaChamados.appendChild(linha);
       });
     } catch (error) {
-        console.error('Erro ao carregar os detalhes do chamado:', error);
+      console.error('Erro ao carregar os detalhes do chamado:', error);
     }
   }
 
@@ -70,6 +70,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     }
   });
 });
+
 
      
 
