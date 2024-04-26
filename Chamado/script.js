@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     // Função para carregar os detalhes do chamado
     async function carregarDetalhesChamado() {
         try {
-            const response = await fetch('URL_PARA_O_ENDPOINT_DO_CHAMADO');
+            const response = await fetch('https://parseapi.back4app.com/classes/Chamado');
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
