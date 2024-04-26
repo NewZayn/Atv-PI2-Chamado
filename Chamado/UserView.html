@@ -17,12 +17,22 @@
                 <th>Mensagem</th>
                 <th>Resposta</th>
                 <th>Finalizado</th>
+                <th>Ações</th> <!-- Nova coluna para as ações -->
             </tr>
         </thead>
         <tbody id="corpoTabelaChamados">
             <!-- Aqui serão inseridos os detalhes do chamado dinamicamente -->
         </tbody>
     </table>
+
+    <h2>Responder ao Chamado</h2>
+    <form id="formResposta">
+        <div>
+            <label for="inputResposta">Resposta:</label>
+            <textarea id="inputResposta" name="resposta" rows="4" required></textarea>
+        </div>
+        <button type="submit">Enviar Resposta e Finalizar Chamado</button>
+    </form>
 
     <script src="script.js"></script>
 </body>
