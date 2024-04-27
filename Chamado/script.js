@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                             <label for="inputResposta_${chamado.objectId}">Resposta:</label>
                             <textarea id="inputResposta_${chamado.objectId}" class="inputResposta" name="resposta" rows="4" required></textarea>
                         </div>
-                        <button type="submit">Enviar Resposta</button>
+                        <button type="submit" onclick="responderChamado('${chamado.objectId}', document.getElementById('inputResposta_${chamado.objectId}').value)">Enviar Resposta</button>
                     </form>
                 </td>
             `;
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 });
 
 function toggleRespostaForm(button) {
-    const formResposta = button.parentElement.nextElementSibling.querySelector('.formResposta');
+    const formResposta = button.nextElementSibling;
     formResposta.style.display = formResposta.style.display === 'none' ? 'block' : 'none';
 }
 
@@ -74,21 +74,9 @@ async function responderChamado(chamadoId, resposta) {
         }
 
         console.log('Resposta enviada e chamado finalizado com sucesso!');
+        location.reload(); // Reload the page to reflect the changes
     } catch (error) {
         console.error('Erro ao enviar a resposta e finalizar o chamado:', error);
     }
 }
-
-document.addEventListener('submit', async function(event) {
-    event.preventDefault();
-    const form = event.target;
-    const resposta = form.querySelector('.inputResposta').value.trim();
-
-    if (resposta !== '') {
-        const chamadoId = form.parentElement.parentElement.dataset.chamadoId;
-        responderChamado(chamadoId, resposta);
-    } else {
-        alert('Por favor, insira uma resposta.');
-    }
-});
 
