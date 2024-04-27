@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', async function() {
             const linha = document.createElement('tr');
             linha.innerHTML = `
                 <td>${chamado.nome}</td>
-                <td>${chamado.email}</td>
+                <td>${chamado.e_mail}</td>
                 <td>${chamado.assunto}</td>
                 <td>${chamado.mensagem}</td>
                 <td>${chamado.resposta || 'Nenhuma resposta ainda'}</td>
